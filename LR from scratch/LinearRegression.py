@@ -24,14 +24,14 @@ class LinearRegression():
         
         for _ in range(self.n_iters):
             y_pred = np.dot(X,self.weights) + self.bias
-            dw = (-2/n_rows)*np.dot(X.T,y-y_pred)
-            db = (-2/n_rows)*np.sum(y-y_pred)
+            dw = (1/n_rows)*np.dot(X.T,y_pred-y)
+            db = (1/n_rows)*np.sum(y-y_pred-y)
             print(f"Iteration {_}: Loss = {np.mean((y - y_pred) ** 2)}")
             self.weights-=self.learning_rate*dw
             self.bias-=self.learning_rate*db
     
     def predict(self,X):
-        
+        +
         y_pred = np.dot(X,self.weights) + self.bias
         return y_pred
     
